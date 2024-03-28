@@ -4,11 +4,18 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const getCountries = async () => {
+    try{
+    const data = await fetch("https://restcountries.com/v3.1/all");
+    const result = await data.json();
+    setCountries(result);
+    
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => setCountries(data))
-      .catch((error) => console.error("Error fetching data: ", error));
+    getCountries();
   }, []);
 
   const filteredCountries = countries.filter((country) =>
