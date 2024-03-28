@@ -73,7 +73,7 @@ function App() {
       </div>
       <div style={containerStyle}>
         {filteredCountries.map((country) => (
-          <div key={country.cca3} style={cardStyle}>
+          <div className="countryCard" key={country.cca3} style={cardStyle}>
             <img
               src={country.flags.png}
               alt={`Flag of ${country.name.common}`}
